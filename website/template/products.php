@@ -1,6 +1,7 @@
 <?php
 // Include the product functions
 include '../controllers/products_functions.php';
+include_once '../config/database.php';
 
 // Start the session
 session_start();
@@ -126,6 +127,11 @@ $products = getAllProducts($connection);
     <label for="price">Product Price:</label>
     <input type="number" id="price" name="price" step="0.01" required>
     <button type="submit" name="add_product">Add Product</button>
+  
+
+    <div class="back-to-home">
+          <a href="../index.php">Back to Home</a>
+        </div>
 </form>
 <div style="text-align: right; margin-bottom: 10px;">
     <a href="?logout=true">Logout</a>

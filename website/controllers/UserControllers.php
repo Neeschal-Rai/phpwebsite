@@ -76,10 +76,8 @@ class UserControllers
         if ($result && mysqli_num_rows($result) > 0) {
             $user = mysqli_fetch_assoc($result);
          
-            if (password_verify($password, $user["PASSWORD"])) {
-                // Password is correct, proceed with login
-                $_SESSION["user_id"] = $user["USER_ID"];
-
+            if (password_verify($password, $user["password"])) {
+                $_SESSION["user_id"] = $user["user_id"];
                 header("Location: ../template/user.php");
                 exit();
             } else {

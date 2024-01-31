@@ -1,6 +1,6 @@
 <?php
 // Include the database connection
-include_once '../config/database.php';
+
 
 // Function to get all products
 function getAllProducts($conn) {
