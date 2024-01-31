@@ -25,8 +25,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["add_to_cart"])) {
         header("Location: ../template/allcartlist.php");
         exit();
     } else {
-        // Handle the case where the query was not successful
         echo "Error: " . mysqli_error($connection);
     }
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["remove"])) {
+    $cart_id = $_POST["cart_id"];
+    $sql = "DELETE FROM cart WHERE id = ?";
+    $stmt = $connection->prepare($sql);
+    $stmt->bind_param("i", $cart_id);
+
+    if ($stmt->execute()) {
+        header("Location: ../template/allcartlist.php");
+        exit();
+    } else {
+        echo "Error removing item from the cart.";
+    }
+
+    $stmt->close();
+} else {
+
+    header("Location: user_cart.php");
+    exit();
 }
 ?>

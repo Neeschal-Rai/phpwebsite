@@ -97,7 +97,7 @@ $user = $userControllers->getUserById($user_id);
             <!-- Add more user information as needed -->
         </div>
 
-        <!-- Additional dashboard content goes here... -->
+
 
         <div>
             <a href="../script/logout.php" class="logout-btn">Logout</a>

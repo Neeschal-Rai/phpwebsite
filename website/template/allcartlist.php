@@ -37,36 +37,7 @@ $cartItems = getAllCarts($connection);
         }
     </style>
 </head>
-<body>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Cart</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
-</head>
 <body>
 
       <header>
@@ -119,7 +90,12 @@ $cartItems = getAllCarts($connection);
                     <td><?php echo $item["name"]; ?></td>
                     <td>$<?php echo $item["price"]; ?></td>
                     <td><?php echo $item["quantity"]; ?></td>
-                    
+                    <td>
+        
+                    <form action="../controllers/add_to_cart_controller.php" method="post">
+                        <input type="hidden" name="cart_id" value="<?php echo $item["id"]; ?>">
+                        <button type="submit" name="remove">Remove</button>
+                   </form>
                 </tr>
             <?php endforeach; ?>
         </table>
